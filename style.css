@@ -2,6 +2,10 @@ nav {
   box-shadow: none;
 }
 
+#end {
+  margin-bottom: 20px;
+}
+
 .nav-transparent {
   background-color: transparent;
 }
