@@ -1,0 +1,147 @@
+nav {
+  box-shadow: none;
+}
+
+.nav-transparent {
+  background-color: transparent;
+}
+
+.nav-white {
+  background-color: white;
+  color: black;
+}
+
+.nav-white a {
+  color: black;
+}
+
+.heading-img {
+  height: 40vh;
+  width: 100vw;
+}
+
+.heading-img img {
+  width: 100vw;
+}
+
+.profile {
+  width: 5vh;
+  padding-right: 5px;
+}
+
+.image h6 {
+  color: gray;
+}
+
+.im {
+  filter: blur(0px);
+}
+
+
+.image img{
+  width: 100%;
+  height: auto;
+  display: inline;
+}
+
+.article-data h6 {
+  display: inline;
+  color: gray;
+  padding-right: 5px;
+}
+
+.article-body {
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+#home-page {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.home {
+  /*background-image: url("https://images.unsplash.com/photo-1466939721550-ad3ef4b9eeec?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=75e3182ab4c906bf50b1feddb25696cb");*/
+  background-image: url("gif.gif");
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 110vh;
+  position: relative;
+  margin-bottom: -10vh;
+}
+
+.cont {
+  margin-top: -200px;
+  text-align: center;
+}
+
+.title-text {
+  font-size: 5em;
+  color: white;
+  width: 100vw;
+  text-align: center;
+}
+
+.subtitle-text {
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  width: 100vw;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+
+.body {
+  margin-bottom: -10vh;
+}
+
+.button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.button-gray {
+  transition: background-color 0.5s ease;
+  background-color: white;
+  color: black
+}
+
+.button-gray:hover {
+  background-color: lightgray;
+}
+
+.button-white {
+  transition: background-color 0.5s ease;
+  background-color: white;
+  color: black
+}
+
+.button-white:hover {
+  background-color: rgba(255, 255, 255, 0.75);;
+}
+
+.centerize {
+  margin: auto;
+}
+
+#dive {
+  margin-top: 100px;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.article {
+  margin-bottom: 100px;
+}
+
+.announcement {
+  border: lightgray 1px solid;
+  padding: 50px;
+  margin-bottom: 50px;
+}
