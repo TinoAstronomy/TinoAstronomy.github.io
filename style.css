@@ -84,6 +84,7 @@ nav {
   color: white;
   width: 100vw;
   text-align: center;
+  opacity: 0;
 }
 
 .subtitle-text {
@@ -92,6 +93,7 @@ nav {
   width: 100vw;
   text-align: center;
   margin-bottom: 50px;
+  opacity: 0;
 }
 
 
@@ -133,6 +135,7 @@ nav {
 
 #dive {
   margin-top: 100px;
+  opacity: 0;
 }
 
 .raleway {
