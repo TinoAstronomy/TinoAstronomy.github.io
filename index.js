@@ -89,7 +89,8 @@ $(document).ready(function() {
     $(".announces").hide();
     db.ref("/posts/" + id).once('value').then(function (snapshot) {
       postData = snapshot.val();
-      inner =
+      display(String(postData));
+      /*inner =
         '<div class="parallax-container heading-img">' +
           '<div class="parallax"><img src="' + postData.title.header +'"></div>' +
         '</div>'+
@@ -115,25 +116,204 @@ $(document).ready(function() {
         inner += '</div><div ><a href="announcement.html" class=" button button-gray valign-wrapper"><i class="material-icons valign">keyboard_arrow_left</i>Return</a></div></div>';
       $("#body").append(inner);
       $("#ti").append(postData.title.val);
-      $('.parallax').parallax();
+      $('.parallax').parallax();*/
     });
   } else {
     $("#ti").append("Announcements");
     var append = "";
     db.ref("/posts").once('value').then(function(snapshot) {
       snapshot.forEach(function(elem) {
-        var app = "<div class='announcement'>";
+        /*var app = "<div class='announcement'>";
         app += "<h2>"+elem.val().title.val+"</h2>";
         app += '<div class="article-data valign-wrapper">'+
           '<img src="'+elem.val().title.profile+'" class="circle profile" alt="" />'+
           '<h6 class="valign">'+elem.val().title.author+'</h6>'+
           '<h6 class="valign">'+elem.val().title.date+'</h6>';
         app += "<a class='right' href='announcement.html?"+ elem.key +"'>more</a></div></div>";
-        append += app;
+        append += app;*/
+        display_preview(String(elem.val()), elem.key);
       });
-      $("#all-announcements").append(append);
-      $('.parallax').parallax();
     });
   }
   $(".button-collapse").sideNav();
 });
+
+function display_preview(scr, elem_key) {
+  $("#ti").append("Announcements");
+  var start = 0;
+  var headerURL;
+  var author;
+  var profileURL;
+  var title;
+  var date;
+  var append_code = "";
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("header:") == 0) {
+        start += 8;
+        headerURL = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("author:") == 0) {
+        start += 8;
+        author = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("profile:") == 0) {
+        start += 9;
+        profileURL = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("title:") == 0) {
+        start += 7;
+        title = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("date:") == 0) {
+        start += 6;
+        date = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    var app = "<div class='announcement'>";
+    app += "<h2>"+title+"</h2>";
+    app += '<div class="article-data valign-wrapper">'+
+      '<img src="'+profileURL+'" class="circle profile" alt="" />'+
+      '<h6 class="valign">'+author+'</h6>'+
+      '<h6 class="valign">'+date+'</h6>';
+    app += "<a class='right' href='announcement.html?"+ elem_key +"'>more</a></div></div>";
+    append_code += app;
+    $("#all-announcements").append(append_code);
+    $('.parallax').parallax();
+}
+
+function display(scr) {
+  var start = 0;
+  var headerURL;
+  var author;
+  var profileURL;
+  var title;
+  var date;
+  var append_code = "";
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("header:") == 0) {
+        start += 8;
+        headerURL = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("author:") == 0) {
+        start += 8;
+        author = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("profile:") == 0) {
+        start += 9;
+        profileURL = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("title:") == 0) {
+        start += 7;
+        title = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    if(scr.charAt(start) == '@') {
+      start++;
+      if(word(scr, start).localeCompare("date:") == 0) {
+        start += 6;
+        date = line(scr, start);
+        start = nextLine(scr, start);
+      }
+    }
+    append_code += '<div class="parallax-container heading-img">' +
+      '<div class="parallax"><img src="' + headerURL +'"></div>' +
+    '</div>'+
+    '<div class="container article">'+
+      '<div class="heading">'+
+        '<h1 div="title">'+ title +'</h1>'+
+        '<div class="article-data valign-wrapper">'+
+          '<img src="'+ profileURL +'" class="circle profile" alt="" />'+
+          '<h6 class="valign">'+ author +'</h6>'+
+          '<h6 class="valign">'+ date +'</h6>'+
+        '</div>'+
+      '</div>'+
+      '<div class="article-body">';
+      var loops = 0;
+      while(true) {
+        loops ++;
+        if(loops >= 8) {
+          break;
+        }
+        if(scr.charAt(start) == '#') {
+          start++;
+          var para = scr.substring(start, scr.indexOf("#", start));
+          console.log(para);
+          append_code += "<p>" + para + "</p>";
+          start = scr.indexOf("#", start) + 1;
+        }
+        if(start == -1 || start >= scr.length) {
+          break;
+        }
+        if(scr.charAt(start) == '@') {
+          start++;
+          if(word(scr, start).localeCompare("img:") == 0) {
+            start += 5;
+            var image = line(scr, start);
+            console.log(image);
+            start = nextLine(scr, start) + 1;
+            var sub = "";
+            if(word(scr, start).localeCompare("sub:") == 0) {
+              start += 5;
+              sub = line(scr, start);
+              console.log(sub);
+            }
+            append_code += '<div class="image"><img src="' + image +'" alt="" /><h6>'+ sub +'</h6></div>';
+          }
+        }
+        start = nextLine(scr, start);
+        console.log(start);
+        if(start == -1) {
+          break;
+        }
+      }
+
+      append_code += '</div><div ><a href="announcement.html" class=" button button-gray valign-wrapper"><i class="material-icons valign">keyboard_arrow_left</i>Return</a></div></div>';
+      $("#body").append(append_code);
+      $("#ti").append(title);
+      $('.parallax').parallax();
+}
+
+function line(scr, start) {
+  return scr.substring(start, scr.indexOf("\n", start));
+}
+
+function nextLine(scr, start) {
+  var next = scr.indexOf("\n", start) + 1;
+  return next;
+}
+
+function word(scr, start) {
+  return scr.substring(start, scr.indexOf(" ", start));
+}
