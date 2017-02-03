@@ -139,7 +139,6 @@ $(document).ready(function() {
 });
 
 function display_preview(scr, elem_key) {
-  $("#ti").append("Announcements");
   var start = 0;
   var headerURL;
   var author;
