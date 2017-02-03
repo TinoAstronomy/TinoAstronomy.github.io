@@ -188,7 +188,7 @@ function display_preview(scr, elem_key) {
       }
     }
     var app = "<div class='announcement'>";
-    app += "<h2>"+title+"</h2>";
+    app += "<h4>"+title+"</h4>";
     app += '<div class="article-data valign-wrapper">'+
       '<img src="'+profileURL+'" class="circle profile" alt="" />'+
       '<h6 class="valign">'+author+'</h6>'+
