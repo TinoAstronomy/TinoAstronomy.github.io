@@ -151,3 +151,21 @@ nav {
   padding: 50px;
   margin-bottom: 50px;
 }
+
+.border_right {
+  border-right: 1px solid grey;
+}
+
+.box {
+  padding: 5px;
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+}
+
+.co {
+  display: flex;
+  flex-direction: column;
+}
