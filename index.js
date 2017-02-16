@@ -134,6 +134,7 @@ $(document).ready(function() {
       });
     });
   }
+  $("#all-announcements").prepend("<h1>Updates</h1>");
   $("#ti").prepend("Announcements");
   $(".button-collapse").sideNav();
 });
