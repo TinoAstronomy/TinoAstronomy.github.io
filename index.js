@@ -194,7 +194,7 @@ function display_preview(scr, elem_key) {
       '<h6 class="valign">'+date+'</h6>';
     app += "<a class='right' href='announcement.html?"+ elem_key +"'>more</a></div></div>";
     append_code += app;
-    $("#all-announcements").append(append_code);
+    $("#all-announcements").prepend(append_code);
     $('.parallax').parallax();
 }
 
