@@ -119,7 +119,6 @@ $(document).ready(function() {
       $('.parallax').parallax();*/
     });
   } else {
-    $("#ti").append("Announcements");
     var append = "";
     db.ref("/posts").once('value').then(function(snapshot) {
       snapshot.forEach(function(elem) {
@@ -135,6 +134,7 @@ $(document).ready(function() {
       });
     });
   }
+  $("#ti").prepend("Announcements");
   $(".button-collapse").sideNav();
 });
 
